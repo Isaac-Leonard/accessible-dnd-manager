@@ -35,14 +35,6 @@ app.controller("main", function ($scope, $timeout, $location) {
   $scope.toJson = angular.toJson;
   $scope.characters =
     JSON.parse(localStorage.getItem("character_sheets")) || [];
-  $scope.characters.forEach(function (char) {
-    if (char.skillsList.SleightOfHand) {
-      char.skillsList.sleightOfHand = char.skillsList.SleightOfHand;
-    }
-    if (char.skillsList.Medicine) {
-      char.skillsList.medicine = char.skillsList.Medicine;
-    }
-  });
   let save = function () {
     localStorage.setItem("character_sheets", angular.toJson($scope.characters));
   };

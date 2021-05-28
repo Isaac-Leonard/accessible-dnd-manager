@@ -43,9 +43,12 @@ app.controller("main", function ($scope, $timeout, $location) {
   });
   $scope.currentCharacter = null;
 
-  $scope.importCharacter = function (json) {
-    const char = JSON.parse(json);
-    $scope.characters.push(char);
+  $scope.characterToImport = "";
+  $scope.importCharacter = function () {
+    if ($scope.characterToImport && $scope.characterToImport.length > 100) {
+      const char = JSON.parse($scope.characterToImport);
+      $scope.characters.push(char);
+    }
   };
 
   $scope.addWeapon = function () {

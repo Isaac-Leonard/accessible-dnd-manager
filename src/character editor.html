@@ -1,0 +1,251 @@
+<bs-row><col-12><button ng-click ="back()">Back</button></col-12></bs-row>
+<bs-row id = "character_abilities">
+<col-12> <h2 id = "character_abilities_heading">Section 1 Character Abilities</h2></col-12>
+<col-12>
+<bs-row><label class = "col-2" for = "character_abilities_strength_base">Strength</label> <col-2"><input id ="character_abilities_strength_base" ng-model = "currentCharacter. characterAbilities.strength. base"></input></col-2>
+<label class = "col-2" for = "character_abilities_strength_modifier">Modifier</label> <col-2"><input id ="character_abilities_strength_modifier" ng-model = "currentCharacter. characterAbilities.strength. modifier"></input></col-2>
+<label class = "col-2" for = "character_abilities_strength_save">Save</label> <col-2"><input id ="character_abilities_strength_save" ng-model = "currentCharacter. characterAbilities.strength. save"></input></col-2>
+</bs-row>
+<bs-row>
+<label class = "col-2" for = "character_abilities_dexterity_base">Dexterity</label> <col-2"><input id = "character_abilities_dexterity_base" ng-model = "currentCharacter. characterAbilities. dexterity. base"></input></col-2>
+<label class = "col-2" for = "character_abilities_dexterity_modifier">Modifier</label> <col-2"><input id = "character_abilities_dexterity_modifier" ng-model = "currentCharacter. characterAbilities. dexterity. modifier"></input></col-2>
+<label class = "col-2" for = "character_abilities_dexterity_save">Save</label> <col-2"><input id = "character_abilities_dexterity_save" ng-model = "currentCharacter. characterAbilities. dexterity. save"></input></col-2>
+</bs-row>
+<bs-row>
+<label class ="col-2" for = "character_abilities_constitution_base">Constitution</label> <col-2"><input id = "character_abilities_constitution_base" ng-model = "currentCharacter. characterAbilities. constitution. base"></input></col-2>
+<label class ="col-2" for = "character_abilities_constitution_modifier">Modifier</label> <col-2"><input id = "character_abilities_constitution_modifier" ng-model = "currentCharacter. characterAbilities. constitution. modifier"></input></col-2>
+<label class ="col-2" for = "character_abilities_constitution_save">Save</label> <col-2"><input id = "character_abilities_constitution_save" ng-model = "currentCharacter. characterAbilities. constitution. save"></input></col-2>
+</bs-row>
+<bs-row>
+<label class ="col-2" for = "character_abilities_intelligence_base">Intelligence</label> <col-2"><input id = "character_abilities_intelligence_base" ng-model = "currentCharacter. characterAbilities. intelligence. base"></input></col-2>
+<label class ="col-2" for = "character_abilities_intelligence_modifier">Modifier</label> <col-2"><input id = "character_abilities_inteligence_modifier" ng-model = "currentCharacter. characterAbilities. intelligence. modifier"></input></col-2>
+<label class ="col-2" for = "character_abilities_intelligence_save">Save</label> <col-2"><input id = "character_abilities_intelligence_save" ng-model = "currentCharacter. characterAbilities. intelligence. save"></input></col-2>
+ </bs-row>
+<bs-row>
+<label class ="col-2" for = "character_abilities_wisdom_base">Wisdom</label> <col-2"><input id = "character_abilities_wisdom_base" ng-model = "currentCharacter. characterAbilities. wisdom. base"></input></col-2>
+<label class ="col-2" for = "character_abilities_wisdom_modifier">Modifier</label> <col-2"><input id = "character_abilities_wisdom_modifier" ng-model = "currentCharacter. characterAbilities. wisdom. modifier"></input></col-2>
+<label class ="col-2" for = "character_abilities_wisdom_save">Save</label> <col-2"><input id = "character_abilities_wisdom_save" ng-model = "currentCharacter. characterAbilities. wisdom. save"></input></col-2>
+</bs-row>
+<bs-row>
+<label class ="col-2" for = "character_abilities_charisma_base">Charisma</label> <col-2"><input id = "character_abilities_charisma_base" ng-model = "currentCharacter. characterAbilities. charisma. base"></input></col-2>
+<label class ="col-2" for = "character_abilities_charisma_modifier">Modifier</label> <col-2"><input id = "character_abilities_charisma_modifier" ng-model = "currentCharacter. characterAbilities. charisma. modifier"></input></col-2>
+<label class ="col-2" for = "character_abilities_charisma_save">Save</label> <col-2"><input id = "character_abilities_charisma_save" ng-model = "currentCharacter. characterAbilities. charisma. save"></input></col-2>
+</bs-row>
+</col-12>
+</bs-row>
+
+<bs-row id ="combat_stats"><col-12><h2 id ="combat_stats_heading">Section 2 Combat Stats</h2></col-12>
+<col-12>
+<bs-row>
+<label class = "col-8" for ="combat_stats_initiative">Initiative</label><col-4"><input id ="combat_stats_initiative" ng-model = "currentCharacter. combatStats. initiative"></input></col-12>
+<label class ="col-8" for ="combat_stats_maximum_hit_points">Maximum Hit Points</label><col-4"><input id ="combat_stats_maximum_hit_points" ng-model = "currentCharacter. combatStats. maximumHitPoints"></input></col-4>
+<label class ="col-8" for ="combat_stats_current_hit_points">Current Hit Points</label><col-4"><input id ="combat_stats_current_hit_points" ng-model = "currentCharacter. combatStats. currentHitPoints"></input></col-4>
+<label class ="col-8" for ="combat_stats_temporary_hit_points">Temporary Hit Points</label><col-4"><input id ="combat_stats_temporary_hit_points" ng-model = "currentCharacter. combatStats. temporaryHitPoints"></input></col-4>
+<label class ="col-8" for ="combat_stats_hit_dice">Hit Dice</label><col-4"><input id ="combat_stats_hit_dice" ng-model = "currentCharacter. combatStats. hitDice"></input></col-4>
+<label class ="col-8" for ="combat_stats_armour_class">Armour Class</label><col-4"><input id ="combat_stats_armour_class" ng-model = "currentCharacter. combatStats. armourClass"></input></col-4>
+<label class ="col-8" for ="combat_stats_speed">Speed</label><col-4"><input id ="combat_stats_speed" ng-model = "currentCharacter. combatStats. speed"></input></col-4>
+<label class ="col-8" for ="combat_stats_passive_perception">Passive Perception</label><col-4"><input id ="combat_stats_passive_perception" ng-model = "currentCharacter. combatStats. passivePerception"></input></col-4></bs-row></col-12>
+</bs-row>
+<bs-row id ="weapons">
+<col-12><h2 id ="weapons_heading">Section 3 Weapons</h2></col-12>
+<ul id = "weapons_list" class ="col-12">
+<li class ="row" ng-repeat = "weapon in currentCharacter. weapons">
+<label for = "{{'weapons_name'+$index}}" class = "col-2">Name</label> <col-2><input id = "{{'weapons_name'+$index}}" ng-model = "weapon. name"></input></col-2>
+<label for = "{{'weapons_hitModifier'+$index}}" class = "col-2">Hit modifier</label> <col-2><input id = "{{'weapons_hit_modifer'+$index}}" ng-model = "weapon. hitModifier"></input></col-2>
+<label for = "{{'weapons_damage_roll'+$index}}" class = "col-2">Damage roll</label> <col-2><input id = "{{'weapons_damage_roll'+$index}}" ng-model = "weapon. damageRoll"></input></col-2>
+<label for = "{{'weapons_range'+$index}}" class = "col-2">Range</label> <col-2><input id = "{{'weapons_range'+$index}}" ng-model = "weapon. range"></input></col-2>
+<col-4><button ng-click = "removeWeapon ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button ng-click ="addWeapon ()" new-focus>Add a Weapon</button></col-12>
+</bs-row>
+<bs-row id ="skills_list">
+<col-12> <h2 id ="skills_list_heading">Section 4 Skills List</h2></col-12>
+<ul class ="col-12">
+<li class ="row"> <label class ="col-3" for ="skills_list_acrobatics">Acrobatics</label><col-3><input id ="skills_list_acrobatics" ng-model="currentCharacter. skillsList. acrobatics"></input></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_animal_handling">Animal Handling</label><col-3><input id ="skills_list_animal_handling" ng-model="currentCharacter. skillsList. animalHandling"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_arcana">Arcana</label><col-3"><input id ="skills_list_arcana" ng-model="currentCharacter. skillsList. arcana"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_athletics">Athletics</label><col-3"><input id ="skills_list_athletics" ng-model="currentCharacter. skillsList. athletics"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_deception">Deception</label><col-3"><input id ="skills_list_deception" ng-model="currentCharacter. skillsList. deception"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_history">History</label><col-3"><input id ="skills_list_history" ng-model="currentCharacter. skillsList. history"></input></col-3></li>
+<li class ="row"> <label for ="skills_list_insight">Insight</label><col-3"><input id ="skills_list_insight" ng-model="currentCharacter. skillsList. insight"></input></col-3></li>
+<li class ="row"> <label class = "col-3" for ="skills_list_intimidation">Intimidation</label><col-3"><input id ="skills_list_intimidation" ng-model="currentCharacter. skillsList. intimidation"></input></col-3></li>
+<li class ="row"> <label class = "col-3" for ="skills_list_investigation">Investigation</label><col-3"><input id ="skills_list_investigation" ng-model="currentCharacter. skillsList. investigation"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_medicine">Medicine</label><col-3"><input id ="skills_list_medicine" ng-model="currentCharacter. skillsList. medicine"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_nature">Nature</label><col-3"><input id ="skills_list_nature" ng-model="currentCharacter. skillsList. nature"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_perception">Perception</label><col-3"><input id ="skills_list_perception" ng-model="currentCharacter. skillsList. perception"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_performance">Performance</label><col-3"><input id ="skills_list_performance" ng-model="currentCharacter. skillsList. performance"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_persuasion">Persuasion</label><col-3"><input id ="skills_list_persuasion" ng-model="currentCharacter. skillsList. persuasion"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_religion">Religion</label><col-3"><input id ="skills_list_religion" ng-model="currentCharacter. skillsList. religion"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_sleight_of_hand">Sleight of Hand</label><col-3"><input id ="skills_list_sleight_of_hand" ng-model="currentCharacter. skillsList. sleightOfHand"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_stealth">Stealth</label><col-3"><input id ="skills_list_stealth" ng-model="currentCharacter. skillsList. stealth"></input></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_survival">Survival</label><col-3"><input id ="skills_list_survival" ng-model="currentCharacter. skillsList. survival"></input></col-3></li>
+</ul>
+</bs-row>
+<bs-row id ="spells_and_combat_abilities">
+<col-12><h2 id ="spells_and_combat_abilities_heading">Section 5 Spells and Combat Abilities</h2></col-12>
+<ul id ="spells_and_combat_abilities_list" class="col-12">
+<li ng-repeat = "val in currentCharacter. spellsAndCombatAbilities" class = "row">
+<label class ="col-3" for ="{{'spells_and_combat_abilities_name'+$index}}">Name</label><col-3><input id = "{{'spells_and_combat_abilities_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'spells_and_combat_abilities_description'+$index}}">Description</label><col-3><textarea id = "{{'spells_and_combat_abilities_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removeSpellOrCombatAbility ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button id ="spells_and_combat_abilities_add" ng-click ="addSpellOrCombatAbility()" new-focus>Add a spell or ability</button></col-12>
+ </bs-row>
+<bs-row id ="character_features">
+<col-12><h2 id ="character_features_heading">Section 6 Character Features</h2></col-12>
+<ul class = "col-12" id ="character_features_list">
+<li ng-repeat = "val in currentCharacter. characterFeatures" class = "row">
+<label class ="col-3" for ="{{'character_features_name'+$index}}">Name</label><col-3><input id = "{{'character_features_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'character_features_description'+$index}}">Description</label><col-3><textarea id = "{{'character_features_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removeCharacterFeature ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button ng-click ="addCharacterFeature()" new-focus>Add a Feature</button></col-12>
+ </bs-row>
+<bs-row id ="inventory">
+<col-12><h2 id ="inventory_heading">Section 7 Inventory</h2></col-12>
+<col-12><h3>Armour</h3></col-12>
+<ul id ="inventory_armour_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. inventory. armour" class = "row">
+<label class ="col-3" for ="{{'inventory_armour_name'+$index}}">Name</label><col-3><input id = "{{'inventory_armour_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'inventory_armour_description'+$index}}">Description</label><col-3><textarea id = "{{'inventory_armour_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removeArmour ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button id ="inventory_armour_add" ng-click = "addArmour ()" new-focus>Add Armour</button></col-12>
+
+<col-12><h3>Weapons</h3></col-12>
+<ul id ="inventory_weapons_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. inventory. weapons" class = "row">
+<label class ="col-3" for ="{{'inventory_weapons_name'+$index}}">Name</label><col-3><input id = "{{'inventory_weapons_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'inventory_weapons_description'+$index}}">Description</label><col-3><textarea id = "{{'inventory_weapons_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removeInventoryWeapon ($index)">Remove</button></col-4>
+</li>
+</ul>
+
+<col-12><button id ="inventory_weapons_add" ng-click ="addWeapon()" new-focus>Add Weapon</button></col-12>
+<col-12><h3>Potions</h3></col-12>
+<ul id ="inventory_potions_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. inventory. potions" class = "row">
+<label class ="col-3" for ="{{'inventory_potions_name'+$index}}">Name</label><col-3><input id = "{{'inventory_potions_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'inventory_potions_description'+$index}}">Description</label><col-3><textarea id = "{{'inventory_potions_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removePotion ($index)">Remove</button></col-4>
+</li>
+</ul>
+
+<col-12><button ng-click ="addPotion()" new-focus>Add Potion</button></col-12>
+<col-12><h3>Treasure</h3></col-12>
+<ul id ="inventory_treasure_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. inventory. treasure" class = "row">
+<label class ="col-3" for ="{{'inventory_treasure_name'+$index}}">Name</label><col-3><input id = "{{'inventory_treasure_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'inventory_treasure_description'+$index}}">Description</label><col-3><textarea id = "{{'inventory_treasure_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removeTreasure ($index)">Remove</button></col-4>
+</li>
+</ul>
+
+<col-12><button ng-click ="addTreasure()" new-focus>Add Treasure</button></col-12>
+<col-12><h3>Kits and Tools</h3></col-12>
+<ul id ="inventory_kits_and_tools_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. inventory. kitsAndTools" class = "row">
+<label class ="col-3" for ="{{'inventory_kits_and_tools_name'+$index}}">Name</label><col-3><input id = "{{'inventory_kits_and_tools_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'inventory_kits_and_tools_description'+$index}}">Description</label><col-3><textarea id = "{{'inventory_kits_and_tools_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removeKitOrTool ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button ng-click ="addKitOrTool()" new-focus>Add a Kit or tool</button></col-12>
+<col-12><h3>Items</h3></col-12>
+<ul id ="inventory_items_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. inventory. items" class = "row">
+<label class ="col-3" for ="{{'inventory_item_name'+$index}}">Name</label><col-3><input id = "{{'inventory_item_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'inventory_item_description'+$index}}">Description</label><col-3><textarea id = "{{'inventory_item_description'+$index}}" ng-model = "val. description"></textarea></col-3>
+<col-4><button ng-click = "removeItem ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button ng-click ="addItem()" new-focus>Add Item</button></col-12>
+ </bs-row>
+<bs-row id ="proficiencies">
+<col-12><h2 id ="proficiencies_heading">Section 8 Proficiencies</h2></col-12>
+<ul id ="proficiencies_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. proficiencies" class = "row">
+<label class ="col-3" for ="{{'proficiency_type'+$index}}">Type</label><col-3><input id = "{{'proficiency_type'+$index}}" ng-model = "val. name" placeholder ="skills"></input></col-3>
+<label class ="col-3" for ="{{'proficiency_applied_to'+$index}}">Applied To</label><col-3><textarea id = "{{'proficiency_applied_to'+$index}}" ng-model = "val. description" placeholder ="athletics religion"></textarea></col-3>
+<col-4><button ng-click = "removeProficiency ($index)">Remove</button></col-4>
+</li>
+</ul>
+
+<col-12><button ng-click ="addProficiency()" new-focus>Add a Proficiency</button></col-12>
+ </bs-row>
+<bs-row id ="character_information_list">
+<col-12><h2 id ="character_information_list_heading">Section 9 Character Information List</h2></col-12>
+<col-12>
+<bs-row>
+<label class ="col-4" for ="character_information_list_player_name">Player Name</label><col-8><input id ="character_information_list_player_name" ng-model ="currentCharacter. characterInformationList. playerName"></input></col-8>
+<label class = "col-4" for ="character_information_list_character_name">Character Name</label><col-8><input id ="character_information_list_character_name" ng-model ="currentCharacter. characterInformationList. characterName"></input></col-8>
+<label class = "col-4" for ="character_information_list_race">Race</label><col-8><input id ="character_information_list_race" ng-model ="currentCharacter. characterInformationList. race"></input></col-8>
+<label class = "col-3" for ="character_information_list_level">Level</label><col-3><input id ="character_information_list_level" ng-model ="currentCharacter. characterInformationList. level"></input></col-3>
+<label class = "col-3" for ="character_information_list_experience">Experience</label><col-3><input id ="character_information_list_experience" ng-model ="currentCharacter. characterInformationList. experience"></input></col-3>
+<label class = "col-3" for ="character_information_list_advancement_points">Advancement points</label><col-3><input id ="character_information_list_advancement_points" ng-model ="currentCharacter. characterInformationList. advancementPoints"></input></col-3>
+<label class = "col-3" for ="character_information_list_treasure_points">Treasure points</label><col-3><input id ="character_information_list_treasure_points" ng-model ="currentCharacter. characterInformationList. treasurePoints"></input></col-3>
+<label class = "col-4" for ="character_information_list_class">Class</label><col-8><input id ="character_information_list_class" ng-model ="currentCharacter. characterInformationList. class"></input></col-8>
+
+<label class = "col-4" for ="character_information_list_background">Background</label><col-8><input id ="character_information_list_background" ng-model ="currentCharacter. characterInformationList. background"></input></col-8>
+<label class = "col-4" for ="character_information_list_age">Age</label><col-8><input id ="character_information_list_age" ng-model ="currentCharacter. characterInformationList. age"></input></col-8></col-12>
+<label  class = "col-4" for ="character_information_list_height">Height</label><col-8><input id ="character_information_list_height" ng-model ="currentCharacter. characterInformationList. height"></input></col-8>
+<label class = "col-4" for ="character_information_list_alignment">Alignment</label><col-8><input id ="character_information_list_alignment" ng-model ="currentCharacter. characterInformationList. alignment"></input></col-8>
+<label class = "col-4" for ="character_information_list_language">Language</label><col-8><input id ="character_information_list_language" ng-model ="currentCharacter. characterInformationList. language"></input></col-8>
+<label class = "col-4" for ="character_information_list_dci_number">DCI Number</label><col-8><input id ="character_information_list_dci_number" ng-model ="currentCharacter. characterInformationList. DCINumber"></input></col-8>
+</bs-row>
+</col-12>
+</bs-row>
+<bs-row id ="character_background">
+<col-12><h2 id ="character_background_heading">Section 10 Character Background</h2></col-12>
+<label class = "col-4" for ="character_background_personality_traits">Personality Traits</label><col-8><textarea id ="character_background_personality_traits" ng-model ="currentCharacter. characterBackground. personalityTreys"></textarea></col-8>
+<label  class = "col-4" for ="character_background_ideals">Ideals  </label><col-8><textarea id ="character_background_ideals" ng-model ="currentCharacter. characterBackground. ideals"></textarea></col-8>
+<label class = "col-4" for ="character_background_bonds">Bonds  </label><col-8><textarea id ="character_background_bonds" ng-model ="currentCharacter. characterBackground. bonds"></textarea></col-8>
+<label class = "col-4" for ="character_background_floors">Flaws  </label><col-8><textarea id ="character_background_floors" ng-model ="currentCharacter. characterBackground. floors"></textarea></col-8>
+<label class = "col-4" for ="character_background_character_appearance">Character appearance  </label><col-8><textarea id ="character_background_character_appearance" ng-model ="currentCharacter. characterBackground. characterAppearance"></textarea></col-8>
+<label class = "col-4" for ="character_background_character_back_story">Character Back Story</label><col-8><textarea id ="character_background_character_back_story" ng-model ="currentCharacter. characterBackground. characterBackStory"></textarea></col-8></bs-row>
+</col-12>
+</bs-row>
+<bs-row id ="spell_book">
+<col-12><h2 id ="spell_book_heading">Section 11 Spell Book</h2></col-12>
+<col-12><h3>Cantrips</h3></col-12>
+<ul id ="spell_book_cantrips" class ="col-12">
+<li ng-repeat ="val in currentCharacter. spellBook. cantrips" class ="row">
+<label class = "col-3" for = "{{'cantrip_name'+$index}}">Name</label> <col-3><input id ="{{'cantrip_name'+$index}}" ng-model ="val. name"></input></col-3>
+<label class ="col-3" for ="{{'cantrip_description'+$index}}">Description</label> <col-3><textarea id = "{{'cantrip_description'+$index}}" ng-model ="val. description"></textarea></col-3>
+<col-4><button ng-click = "removeCantrip ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button ng-click ="addCantrip()" new-focus>Add a Cantrip</button></col-12>
+<col-12><h3>Spells</h3></col-12>
+<ul id ="spell_book_spells" class ="col-12">
+<li ng-repeat ="val in currentCharacter. spellBook. spells" class ="row">
+<label class = "col-3" for = "{{'spell_name'+$index}}">Name</label> <col-3><input id ="{{'spell_name'+$index}}" ng-model ="val. name"></input></col-3>
+<label class ="col-3" for ="{{'spell_description'+$index}}">Description</label> <col-3><textarea id = "{{'spell_description'+$index}}" ng-model ="val. description"></textarea></col-3>
+
+<label class ="col-3" for ="{{'spell_level'+$index}}">Level</label> <col-3><input id = "{{'spell_level'+$index}}" ng-model ="val. level"></input></col-3>
+<label class ="col-3" for ="{{'spell_memorised'+$index}}">Memorised</label> <col-3><input id = "{{'spell_memorised'+$index}}" ng-model ="val. memorised" type ='checkbox'></input></col-3>
+<col-4><button ng-click = "removeSpell ($index)">Remove</button></col-4>
+</li>
+</ul>
+<col-12><button ng-click ="addSpell()" new-focus>Add a spell</button></col-12>
+</bs-row>
+<bs-row id ="notes">
+<col-12><h2 id ="notes_heading">Section 11 Notes</h2></col-12>
+<ul id ="notes_list" class ="col-12">
+<li ng-repeat = "val in currentCharacter. notes" class = "row">
+<label class ="col-3" for ="{{'note_name'+$index}}">Name</label><col-3><input id = "{{'note_name'+$index}}" ng-model = "val. name"></input></col-3>
+<label class ="col-3" for ="{{'note'+$index}}">Note</label><col-3><textarea id = "{{'note'+$index}}" ng-model = "val. note"></textarea></col-3>
+<col-4><button ng-click = "removeNote ($index)">Remove</button></col-4>
+</li>
+</ul>
+
+<col-12><button ng-click ="addNote()" new-focus>Add a Note</button></col-12>
+ </bs-row>
+ <bs-row>
+<col-12><h2>Export</h2></col-12>
+<pre>{{toJson (currentCharacter)}}</pre>
+ </bs-row>

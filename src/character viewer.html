@@ -1,0 +1,161 @@
+<bs-row id ="table_of_contents">
+<col-12><h2>TABLE OF CONTENTS</h2></col-12>
+<col-12><a href ="#character_abilities_heading"> SECTION 1 CHARACTER ABILITIES</a></col-12>
+<col-12><a href ="#combat_stats_heading">SECTION 2 COMBAT STATS</a></col-12>
+<col-12><a href ="#weapons_heading">SECTION 3 WEAPONS</a></col-12>
+<col-12><a href ="#skills_list_heading">SECTION 4 SKILLS LIST</a></col-12>
+<col-12><a href ="#spells_and_combat_abilities_heading">SECTION 5 SPELLS AND COMBAT ABILITIES</a></col-12>
+<col-12><a href ="#character_features_heading">SECTION 6 CHARACTER FEATURES</a></col-12>
+<col-12><a href ="#inventory_heading">SECTION 7 INVENTORY</a></col-12>
+<col-12><a href ="#proficiencies_heading">SECTION 8 PROFICIENCIES</a></col-12>
+<col-12><a href ="#character_information_list_heading"> SECTION 9 CHARACTER INFORMATION LIST</a></col-12>
+<col-12><a href="#character_background_heading"> SECTION 10 CHARACTER BACKGROUND</a></col-12>
+<col-12><a href="#spell_book_heading">SECTION 11 SPELL BOOK</a></col-12></bs-row>
+<bs-row id = "character_abilities">
+<col-12> <h2 id = "character_abilities_heading">Section 1 Character Abilities</h2></col-12>
+<col-12>
+<bs-row><label class = "col-2" for = "character_abilities_strength">Strength</label> <col-2"><input ng-model = "currentCharacter. abilities.strength. base"></input></col-2>
+<col-2>Modifier:</col-2><col-12 id ="character_abilities_strength_modifier"></col-2><col-2>
+<button id ="character_abilities_strength_roll_check">Roll: check</button></col-2><col-2><button id ="character_abilities_strength_roll_save">Roll: save</button></col-2> </bs-row>
+<bs-row>
+<label class = "col-2" for = "character_abilities_dexterity">Dexterity</label> <col-2"><input id = "character_abilities_dexterity"></input></col-2>
+<col-2>Modifier:</col-2><col-2 id ="character_abilities_dexterity_modifier"></col-2>
+<col-2><button id ="character_abilities_dexterity_roll_check">Roll: check</button></col-2><col-2><button id ="character_abilities_dexterity_roll_save">Roll: save</button> </col-2></bs-row>
+<bs-row>
+<label class ="col-2" for = "character_abilities_constitution">Constitution</label> <col-2"><input id = "character_abilities_constitution"></input></col-2>
+<col-2>Modifier: </col-2><col-2 id ="character_abilities_constitution_modifier"></input></col-2>
+<col-2><button id ="character_abilities_constitution_roll_check">Roll: check</button></col-2><col-2><button id ="character_abilities_constitution_roll_save">Roll: save</button> </col-2> </bs-row>
+<bs-row>
+<label class ="col-2" for = "character_abilities_intelligence">Intelligence</label> <col-2"><input id = "character_abilities_intelligence"></input></col-2>
+<col-2>Modifier</col-2><col-2 id ="character_abilities_intelligence_modifier"></col-2> <col-2><button id ="character_abilities_intelligence_roll_check">Roll: check</button></col-2><col-2><button id ="character_abilities_intelligence_roll_save">Roll: save</button><col-2>
+ </bs-row>
+<bs-row>
+<label class = "col-2" for = "character_abilities_wisdom">Wisdom</label> <col-2"><input id = "character_abilities_wisdom"></input></col-2>
+<col-2>Modifier:</col-2><col-2 id ="character_abilities_wisdom_modifier"></col-2>
+<col-2><button id ="character_abilities_wisdom_roll_check">Roll: check</button></col-2><col-2><button id ="character_abilities_wisdom_roll_save">Roll: save</button></col-2> </bs-row>
+<bs-row>
+<label class ="col-2" for = "character_abilities_charisma">Charisma</label> <col-2"><input id = "character_abilities_charisma"></input></col-2>
+<col-2>Modifier: </col-2><col-2 id ="character_abilities_charisma_modifier"></col-2>
+<col-2><button id ="character_abilities_character_roll_check">Roll: check</button></col-2><col-2><button id ="character_abilities_charisma_roll_save">Roll: save</button></col-2> 
+</bs-row>
+</col-12>
+</bs-row>
+
+<bs-row id ="combat_stats"><col-12><h2 id ="combat_stats_heading">Section 2 Combat Stats</h2></col-12>
+<col-12>
+<bs-row>
+<label class = "col-8" for ="combat_stats_initiative">Initiative</label><col-4"><input id ="combat_stats_initiative"></input></col-12>
+<label class ="col-8" for ="combat_stats_maximum_hit_points">Maximum Hit Points</label><col-4"><input id ="combat_stats_maximum_hit_points"></input></col-4>
+<label class ="col-8" for ="combat_stats_current_hit_points">Current Hit Points</label><col-4"><input id ="combat_stats_current_hit_points"></input></col-4>
+<label class ="col-8" for ="combat_stats_temporary_hit_points">Temporary Hit Points</label><col-4"><input id ="combat_stats_temporary_hit_points"></input></col-4>
+<label class ="col-8" for ="combat_stats_hit_dice">Hit Dice</label><col-4"><input id ="combat_stats_hit_dice"></input></col-4>
+<label class ="col-8" for ="combat_stats_armour_class">Armour Class</label><col-4"><input id ="combat_stats_armour_class"></input></col-4>
+<label class ="col-8" for ="combat_stats_speed">Speed</label><col-4"><input id ="combat_stats_speed"></input></col-4>
+<label class ="col-8" for ="combat_stats_passive_perception">Passive Perception</label><col-4"><input id ="combat_stats_passive_perception"></input></col-4></bs-row></col-12>
+</bs-row>
+<bs-row id ="weapons">
+<col-12><h2 id ="weapons_heading">Section 3 Weapons</h2></col-12>
+<ul id = "weapons_list" class ="col-12">
+</ul>
+<col-12><button id ="weapons_add">Add a Weapon</button></col-12>
+</bs-row>
+<bs-row id ="skills_list">
+<col-12> <h2 id ="skills_list_heading">Section 4 Skills List</h2></col-12>
+<ul class ="col-12">
+<li class ="row"> <label class ="col-3" for ="skills_list_acrobatics">Acrobatics</label><col-3><input id ="skills_list_acrobatics"></input></col-3><col-3><button id ="skills_list_acrobatics_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list__roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_animal_handling">Animal Handling</label><col-3><input id ="skills_list_animal_handling"></input></col-3><col-3><button id ="skills_list_animal_handling_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_animal_handling_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_arcana">Arcana</label><col-3"><input id ="skills_list_arcana"></input></col-3><col-3><button id ="skills_list_arcana_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_arcana_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_athletics">Athletics</label><col-3"><input id ="skills_list_athletics"></input></col-3><col-3><button id ="skills_list_athletics_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_athletics_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_deception">Deception</label><col-3"><input id ="skills_list_deception"></input></col-3><col-3><button id ="skills_list_deception_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_deception_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_history">History</label><col-3"><input id ="skills_list_history"></input></col-3><col-3><button id ="skills_list_history_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_history_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label for ="skills_list_insight">Insight</label><col-3"><input id ="skills_list_insight"></input></col-3><col-3><button id ="skills_list_insight_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_insight_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class = "col-3" for ="skills_list_intimidation">Intimidation</label><col-3"><input id ="skills_list_intimidation"></input></col-3><col-3><button id ="skills_list_intimidation_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_intimidation_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class = "col-3" for ="skills_list_investigation">Investigation</label><col-3"><input id ="skills_list_investigation"></input></col-3><col-3><button id ="skills_list_investigation_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_investigation_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_medicine">Medicine</label><col-3"><input id ="skills_list_medicine"></input></col-3><col-3><button id ="skills_list_medicine_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_medicine_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_nature">Nature</label><col-3"><input id ="skills_list_nature"></input></col-3><col-3><button id ="skills_list_nature_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_nature_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_perception">Perception</label><col-3"><input id ="skills_list_perception"></input></col-3><col-3><button id ="skills_list_perception_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_perception_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_performance">Performance</label><col-3"><input id ="skills_list_performance"></input></col-3><col-3><button id ="skills_list_performance_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_performance"_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_persuasion">Persuasion</label><col-3"><input id ="skills_list_persuasion"></input></col-3><col-3><button id ="skills_list_persuasion_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_persuasion_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_religion">Religion</label><col-3"><input id ="skills_list_religion"></input></col-3><col-3><button id ="skills_list_persuasion_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_persuasion_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_sleight_of_hand">Sleight of Hand</label><col-3"><input id ="skills_list_sleight_of_hand"></input></col-3><col-3><button id ="skills_list_sleight_of_hand_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_sleight_of_hand_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_stealth">Stealth</label><col-3"><input id ="skills_list_stealth"></input></col-3><col-3><button id ="skills_list_stealth_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_stealth_roll_save">Roll: save</button></col-3></li>
+<li class ="row"> <label class ="col-3" for ="skills_list_survival">Survival</label><col-3"><input id ="skills_list_survival"></input></col-3><col-3><button id ="skills_list_survival"_roll_check">Roll: check</button></col-3><col-3><button id ="skills_list_survival_roll_save">Roll: save</button></col-3></li>
+</ul>
+</bs-row>
+<bs-row id ="spells_and_combat_abilities">
+<col-12><h2 id ="spells_and_combat_abilities_heading">Section 5 Spells and Combat Abilities</h2></col-12>
+<ul id ="spells_and_combat_abilities_list" class="col-12"></ul>
+<col-12><button id ="spells_and_combat_abilities_add">Add a spell or ability</button></col-12>
+ </bs-row>
+<bs-row id ="character_features">
+<col-12><h2 id ="character_features_heading">Section 6 Character Features</h2></col-12>
+<ul class = "col-12" id ="character_features_list"></ul>
+<col-12><button id ="character_features_add">Add a Feature</button></col-12>
+ </bs-row>
+<bs-row id ="inventory">
+<col-12><h2 id ="inventory_heading">Section 7 Inventory</h2></col-12>
+<col-12><h3>Armour</h3></col-12>
+<ul id ="inventory_armour_list" class ="col-12"></ul>
+<col-12><button id ="inventory_armour_add">Add Armour</button></col-12>
+
+<col-12><h3>Weapons</h3></col-12>
+<ul id ="inventory_weapons_list" class ="col-12"></ul>
+
+<col-12><button id ="inventory_weapons_add">Add Weapon</button></col-12>
+<col-12><h3>Potions</h3></col-12>
+<ul id ="inventory_potions_list" class ="col-12"></ul>
+
+<col-12><button id ="inventory_potions_add">Add Potion</button></col-12>
+<col-12><h3>Treasure</h3></col-12>
+<ul id ="inventory_treasure_list" class ="col-12"></ul>
+
+<col-12><button id ="inventory_treasure_add">Add Treasure</button></col-12>
+<col-12><h3>Kits and Tools</h3></col-12>
+<ul id ="inventory_kits_and_tools_list" class ="col-12"></ul>
+<col-12><button id ="inventory_kits_and_tools_add">Add Kit or tool</button></col-12>
+<col-12><h3>Items</h3></col-12>
+<ul id ="inventory_items_list" class ="col-12"></ul>
+<col-12><button id ="inventory_items_add">Add Item</button></col-12>
+ </bs-row>
+<bs-row id ="proficiencies">
+<col-12><h2 id ="proficiencies_heading">Section 8 Proficiencies</h2></col-12>
+<ul id ="proficiencies_list" class ="col-12"></ul>
+
+<col-12><button id ="proficiencies_add">Add a Proficiency</button></col-12>
+ </bs-row>
+<bs-row id ="character_information_list">
+<col-12><h2 id ="character_information_list_heading">Section 9 Character Information List</h2></col-12>
+<col-12>
+<bs-row>
+<label class ="col-4" for ="character_information_list_player_name">Player Name</label><col-8><input id ="character_information_list_player_name"></input></col-8>
+<label class = "col-4" for ="character_information_list_character_name">Character Name</label><col-8><input id ="character_information_list_character_name"></input></col-8>
+<label class = "col-4" for ="character_information_list_race">Race</label><col-8><input id ="character_information_list_race"></input></col-8>
+<label class = "col-4" for ="character_information_list_class">Class</label><col-8><input id ="character_information_list_class"></input></col-8>
+<label class = "col-4" for ="character_information_list_background">Background</label><col-8><input id ="character_information_list_background"></input></col-8>
+<label class = "col-4" for ="character_information_list_age">Age</label><col-8><input id ="character_information_list_age"></input></col-8></col-12>
+<label  class = "col-4" for ="character_information_list_height">Height</label><col-8><input id ="character_information_list_height"></input></col-8>
+<label class = "col-4" for ="character_information_list_alignment">Alignment</label><col-8><input id ="character_information_list_alignment"></input></col-8>
+<label class = "col-4" for ="character_information_list_language">Language</label><col-8><input id ="character_information_list_language"></input></col-8>
+<label class = "col-4" for ="character_information_list_dci_number">DCI Number</label><col-8><input id ="character_information_list_dci_number"></input></col-8>
+</bs-row>
+</col-12>
+</bs-row>
+<bs-row id ="character_background">
+<col-12><h2 id ="character_background_heading">Section 10 Character Background</h2></col-12>
+<label class = "col-4" for ="character_background_personality_traits">Personality Traits</label><col-8><textarea id ="character_background_personality_traits"></textarea></col-8>
+<label  class = "col-4" for ="character_background_ideals">Ideals  </label><col-8><textarea id ="character_background_ideals"></textarea></col-8>
+<label class = "col-4" for ="character_background_bonds">Bonds  </label><col-8><textarea id ="character_background_bonds"></textarea></col-8>
+<label class = "col-4" for ="character_background_floors">Flaws  </label><col-8><textarea id ="character_background_floors"></textarea></col-8>
+<label class = "col-4" for ="character_background_character_appearance">Character appearance  </label><col-8><textarea id ="character_background_character_appearance"></textarea></col-8>
+<label class = "col-4" for ="character_background_character_back_story">Character Back Story</label><col-8><textarea id ="character_background_character_back_story"></textarea></col-8></bs-row>
+</col-12>
+</bs-row>
+<bs-row id ="spell_book">
+<col-12><h2 id ="spell_book_heading">Section 11 Spell Book</h2></col-12>
+<col-12><h3>Cantrips</h3></col-12>
+<ul id ="spell_book_cantrips" class ="col-12"></ul>
+<col-12><button id ="spell_book_cantrip_add">Add a Cantrip</button></col-12>
+<col-12><h3>Spells</h3></col-12>
+<ul id ="spell_book_spells" class ="col-12"></ul>
+<col-12><button id ="spell_book_spell_add">Add a spell</button></col-12>
+</bs-row>

@@ -1,0 +1,32 @@
+<div class ='row' id = 'character_create'>
+<div class ="cols-12">
+<div id = "character_select_race_box">
+<div class = "col-12">
+<h2> Choose Your Characters Race</h2>
+</div>
+<div class = "col-12">
+<select id = "character_create_select_race"></select>
+</div>
+<div id ="character_create_race_info" class = "col-12">
+
+</div>
+</div>
+</div>
+</div>
+    <script src='https://code.jquery.com/jquery-3.3.0.min.js'></script>
+    <script>
+$(function(){
+let races, classes;
+$. getJSON ("./races.json", function (data){
+races = data. Races;
+for (let i in races){
+console. log (i);
+$("#character_create_select_race"). append ("<option>" +i+ "</option>");
+}
+$("#character_create_select_race"). append ("<option>Other</option>");
+$("#character_create_select_race"). change (function (){
+$("#character_create_race_info"). html (JSON. stringify (races [this. value]));
+});
+});
+});
+</script>

@@ -43,12 +43,12 @@ app.controller("main", function ($scope, $timeout, $location) {
   });
   $scope.currentCharacter = null;
 
-  $scope.characterToImport = "";
+  $scope.characterToImport = { val: "" };
   $scope.importCharacter = function () {
-    if ($scope.characterToImport && $scope.characterToImport.length > 100) {
-      const char = JSON.parse($scope.characterToImport);
-      $scope.characters.push(char);
-    }
+    console.log($scope.characterToImport.val);
+    const char = JSON.parse($scope.characterToImport.val);
+    $scope.characters.push(char);
+    $scope.characterToImport = "";
   };
 
   $scope.addWeapon = function () {

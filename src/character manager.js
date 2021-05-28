@@ -43,6 +43,11 @@ app.controller("main", function ($scope, $timeout, $location) {
   });
   $scope.currentCharacter = null;
 
+  $scope.importCharacter = function (json) {
+    const char = JSON.parse(json);
+    $scope.characters.push(char);
+  };
+
   $scope.addWeapon = function () {
     $scope.currentCharacter.weapons.push({
       name: "",

@@ -48,7 +48,7 @@ app.controller("main", function ($scope, $timeout, $location) {
     console.log($scope.characterToImport.val);
     const char = JSON.parse($scope.characterToImport.val);
     $scope.characters.push(char);
-    $scope.characterToImport = "";
+    $scope.characterToImport = { val: "" };
   };
 
   $scope.addWeapon = function () {

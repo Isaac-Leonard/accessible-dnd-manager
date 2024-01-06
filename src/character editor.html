@@ -94,17 +94,6 @@
 </ul>
 <col-12><button id ="spells_and_combat_abilities_add" ng-click ="addSpellOrCombatAbility()" new-focus>Add a spell or ability</button></col-12>
 </bs-row>
-<bs-row id ="character_features">
-<col-12><h2 id ="character_features_heading">Section 6 Character Features</h2></col-12>
-<ul class = "col-12" id ="character_features_list">
-<li ng-repeat = "val in currentCharacter. characterFeatures" class = "row">
-<label class ="col-3" for ="{{'character_features_name'+$index}}">Name</label><col-3><input id = "{{'character_features_name'+$index}}" ng-model = "val. name"></input></col-3>
-<label class ="col-3" for ="{{'character_features_description'+$index}}">Description</label><col-3><textarea id = "{{'character_features_description'+$index}}" ng-model = "val. description"></textarea></col-3>
-<col-4><button ng-click = "removeCharacterFeature ($index)">Remove</button></col-4>
-</li>
-</ul>
-<col-12><button ng-click ="addCharacterFeature()" new-focus>Add a Feature</button></col-12>
- </bs-row>
 <bs-row id ="inventory">
 <col-12><h2 id ="inventory_heading">Section 7 Inventory</h2></col-12>
 <col-12><h3>Armour</h3></col-12>

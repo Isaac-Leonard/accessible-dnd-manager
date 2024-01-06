@@ -36,6 +36,14 @@ app.controller("main", function ($scope, $timeout, $location) {
   $scope.toJson = angular.toJson;
   $scope.characters =
     JSON.parse(localStorage.getItem("character_sheets")) || [];
+  $scope.characters.map(function (char) {
+    for (let feature of char.characterFeatures || []) {
+      char.spellsAndCombatAbilities.push(feature);
+    }
+    char.characterFeatures = undefined;
+    return char;
+  });
+
   let save = function () {
     localStorage.setItem("character_sheets", angular.toJson($scope.characters));
   };
@@ -66,13 +74,6 @@ app.controller("main", function ($scope, $timeout, $location) {
   };
   $scope.addSpellOrCombatAbility = function () {
     $scope.currentCharacter.spellsAndCombatAbilities.push({
-      name: "",
-      description: "",
-      source: "",
-    });
-  };
-  $scope.addCharacterFeature = function () {
-    $scope.currentCharacter.characterFeatures.push({
       name: "",
       description: "",
       source: "",
@@ -126,9 +127,6 @@ app.controller("main", function ($scope, $timeout, $location) {
   };
   $scope.removeSpellOrCombatAbility = function (i) {
     $scope.currentCharacter.spellsAndCombatAbilities.splice(i, 1);
-  };
-  $scope.removeCharacterFeature = function (i) {
-    $scope.currentCharacter.characterFeatures.splice(i, 1);
   };
   $scope.removeWeapon = function (i) {
     $scope.currentCharacter.weapons.splice(i, 1);

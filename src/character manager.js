@@ -83,6 +83,9 @@ app.controller("main", function ($scope, $timeout, $location) {
     $scope.currentCharacter.inventory.armour.push({
       name: "",
       description: "",
+      armourType: "",
+      armourClassBonus: "",
+      penalty: "",
     });
   };
   $scope.addPotion = function () {

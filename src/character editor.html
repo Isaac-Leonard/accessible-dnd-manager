@@ -83,16 +83,17 @@
 </ul>
 </bs-row>
 <bs-row id ="spells_and_combat_abilities">
-<col-12><h2 id ="spells_and_combat_abilities_heading">Section 5 Spells and Combat Abilities</h2></col-12>
+<col-12><h2 id ="spells_and_combat_abilities_heading">Section 5 Combat Abilities</h2></col-12>
 <ul id ="spells_and_combat_abilities_list" class="col-12">
 <li ng-repeat = "val in currentCharacter. spellsAndCombatAbilities" class = "row">
-<label class ="col-3" for ="{{'spells_and_combat_abilities_name'+$index}}">Name</label><col-3><input id = "{{'spells_and_combat_abilities_name'+$index}}" ng-model = "val. name"></input></col-3>
-<label class ="col-3" for ="{{'spells_and_combat_abilities_description'+$index}}">Description</label><col-3><textarea id = "{{'spells_and_combat_abilities_description'+$index}}" ng-model = "val. description"></textarea></col-3>
-<col-4><button ng-click = "removeSpellOrCombatAbility ($index)">Remove</button></col-4>
+<col-2><label for ="{{'spells_and_combat_abilities_name'+$index}}">Name</label><div><input id = "{{'spells_and_combat_abilities_name'+$index}}" ng-model = "val. name"></input></div></col-2>
+<col-5><label for ="{{'spells_and_combat_abilities_description'+$index}}">Description</label><div><textarea id = "{{'spells_and_combat_abilities_description'+$index}}" ng-model = "val. description"></textarea></div></col-5>
+<col-3><label for ="{{'spells_and_combat_abilities_source'+$index}}">Source</label><div><input id = "{{'spells_and_combat_abilities_source'+$index}}" ng-model = "val. source"></input></div></col-3>
+<col-2><button ng-click = "removeSpellOrCombatAbility ($index)">Remove</button></col-2>
 </li>
 </ul>
 <col-12><button id ="spells_and_combat_abilities_add" ng-click ="addSpellOrCombatAbility()" new-focus>Add a spell or ability</button></col-12>
- </bs-row>
+</bs-row>
 <bs-row id ="character_features">
 <col-12><h2 id ="character_features_heading">Section 6 Character Features</h2></col-12>
 <ul class = "col-12" id ="character_features_list">

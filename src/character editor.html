@@ -99,9 +99,12 @@
 <col-12><h3>Armour</h3></col-12>
 <ul id ="inventory_armour_list" class ="col-12">
 <li ng-repeat = "val in currentCharacter. inventory. armour" class = "row">
-<label class ="col-3" for ="{{'inventory_armour_name'+$index}}">Name</label><col-3><input id = "{{'inventory_armour_name'+$index}}" ng-model = "val. name"></input></col-3>
-<label class ="col-3" for ="{{'inventory_armour_description'+$index}}">Description</label><col-3><textarea id = "{{'inventory_armour_description'+$index}}" ng-model = "val. description"></textarea></col-3>
-<col-4><button ng-click = "removeArmour ($index)">Remove</button></col-4>
+<col-2><label" for ="{{'inventory_armour_name'+$index}}">Name</label><input id = "{{'inventory_armour_name'+$index}}" ng-model = "val. name"></input></col-2>
+<col-5><label for ="{{'inventory_armour_description'+$index}}">Description</label><div><textarea id = "{{'inventory_armour_description'+$index}}" ng-model = "val. description"></textarea></div></col-5>
+<col-1><label for ="{{'inventory_armour_bonus'+$index}}">AC bonus</label><div><input id = "{{'inventory_armour_bonus'+$index}}" ng-model = "val.armourClassBonus"></input></div></col-1>
+<col-1><label for ="{{'inventory_armour_type'+$index}}">Type</label><div><input id = "{{'inventory_armour_type'+$index}}" ng-model = "val.armourType"></input></div></col-1>
+<col-1><label for ="{{'inventory_armour_penalty'+$index}}">Penalty</label><div><input id = "{{'inventory_armour_penalty'+$index}}" ng-model = "val.penalty"></input></div></col-1>
+<col-2><button ng-click = "removeArmour ($index)">Remove</button></col-2>
 </li>
 </ul>
 <col-12><button id ="inventory_armour_add" ng-click = "addArmour ()" new-focus>Add Armour</button></col-12>

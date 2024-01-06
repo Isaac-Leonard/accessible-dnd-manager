@@ -15,6 +15,7 @@ app.directive("newFocus", function ($timeout) {
     },
   };
 });
+
 app.config(function ($routeProvider) {
   $routeProvider
     .when("/", {
@@ -67,15 +68,15 @@ app.controller("main", function ($scope, $timeout, $location) {
     $scope.currentCharacter.spellsAndCombatAbilities.push({
       name: "",
       description: "",
+      source: "",
     });
   };
   $scope.addCharacterFeature = function () {
-    console.log("start");
     $scope.currentCharacter.characterFeatures.push({
       name: "",
       description: "",
+      source: "",
     });
-    console.log("done");
   };
   $scope.addArmour = function () {
     $scope.currentCharacter.inventory.armour.push({

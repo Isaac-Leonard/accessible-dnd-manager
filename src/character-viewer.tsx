@@ -25,13 +25,7 @@ import {
   defaultSpell,
   defaultWeapon,
 } from "./character";
-import {
-  itemAdder,
-  makeArrayPropertySetterFactory,
-  makePropertySetterFactory,
-  removeItem,
-  useArrayManager,
-} from "./utils";
+import { makePropertySetterFactory, useArrayManager } from "./utils";
 import { InputControl, NumberControl, TextareaControl } from "./components";
 
 type CharacterViewerProps = {
@@ -216,7 +210,11 @@ type WeaponsViewerProps = {
 };
 
 const WeaponsViewer = ({ weapons, setWeapons }: WeaponsViewerProps) => {
-  const setter = makeArrayPropertySetterFactory(weapons, setWeapons);
+  const { set, remove, add, ref } = useArrayManager(
+    weapons,
+    setWeapons,
+    defaultWeapon
+  );
   return (
     <div id="weapons">
       <div>
@@ -228,35 +226,32 @@ const WeaponsViewer = ({ weapons, setWeapons }: WeaponsViewerProps) => {
             <InputControl
               label="Name"
               value={weapon.name}
-              setValue={setter(index, "name")}
+              setValue={set(index, "name")}
+              innerRef={index === weapons.length - 1 ? ref : null}
             />
             <NumberControl
               label="Hit modifier"
               value={weapon.hitModifier}
-              setValue={setter(index, "hitModifier")}
+              setValue={set(index, "hitModifier")}
             />
             <InputControl
               label="Damage roll"
               value={weapon.damageRoll}
-              setValue={setter(index, "damageRoll")}
+              setValue={set(index, "damageRoll")}
             />
             <InputControl
               label="Range"
               value={weapon.range}
-              setValue={setter(index, "range")}
+              setValue={set(index, "range")}
             />
             <div>
-              <button onClick={removeItem(weapons, setWeapons, index)}>
-                Remove
-              </button>
+              <button onClick={remove(index)}>Remove</button>
             </div>
           </li>
         ))}
       </ul>
       <div>
-        <button onClick={() => setWeapons([...weapons, defaultWeapon()])}>
-          Add a Weapon
-        </button>
+        <button onClick={add}>Add a Weapon</button>
       </div>
     </div>
   );
@@ -517,7 +512,11 @@ const ItemViewer = ({
   items,
   setItems,
 }: ItemViewerProps) => {
-  const setter = makeArrayPropertySetterFactory(items, setItems);
+  const { set, remove, add, ref } = useArrayManager(
+    items,
+    setItems,
+    defaultItem
+  );
   return (
     <div>
       <div>
@@ -529,25 +528,22 @@ const ItemViewer = ({
             <InputControl
               label="Name"
               value={item.name}
-              setValue={setter(index, "name")}
+              setValue={set(index, "name")}
+              innerRef={index === items.length - 1 ? ref : null}
             />
             <TextareaControl
               label="Description"
               value={item.description}
-              setValue={setter(index, "description")}
+              setValue={set(index, "description")}
             />
             <div>
-              <button onClick={removeItem(items, setItems, index)}>
-                Remove
-              </button>
+              <button onClick={remove(index)}>Remove</button>
             </div>
           </li>
         ))}
       </ul>
       <div>
-        <button onClick={itemAdder(items, setItems, defaultItem)}>
-          {addbuttonText}
-        </button>
+        <button onClick={add}>{addbuttonText}</button>
       </div>
     </div>
   );
@@ -559,7 +555,11 @@ type ArmourViewerProps = {
 };
 
 const ArmourViewer = ({ armour: armourList, setArmour }: ArmourViewerProps) => {
-  const setter = makeArrayPropertySetterFactory(armourList, setArmour);
+  const { set, remove, add, ref } = useArrayManager(
+    armourList,
+    setArmour,
+    defaultArmour
+  );
   return (
     <div>
       <div>
@@ -571,43 +571,37 @@ const ArmourViewer = ({ armour: armourList, setArmour }: ArmourViewerProps) => {
             <InputControl
               label="Name"
               value={armour.name}
-              setValue={setter(index, "name")}
+              setValue={set(index, "name")}
+              innerRef={armourList.length - 1 === index ? ref : null}
             />
             <TextareaControl
               label="Description"
               value={armour.description}
-              setValue={setter(index, "description")}
+              setValue={set(index, "description")}
             />
             <InputControl
               label="AC bonus"
               value={armour.armourClassBonus}
-              setValue={setter(index, "armourClassBonus")}
+              setValue={set(index, "armourClassBonus")}
             />
             <InputControl
               label="Type"
               value={armour.armourType}
-              setValue={setter(index, "armourType")}
+              setValue={set(index, "armourType")}
             />
             <InputControl
               label="Penalty"
               value={armour.penalty}
-              setValue={setter(index, "penalty")}
+              setValue={set(index, "penalty")}
             />
             <div>
-              <button onClick={removeItem(armourList, setArmour, index)}>
-                Remove
-              </button>
+              <button onClick={remove(index)}>Remove</button>
             </div>
           </li>
         ))}
       </ul>
       <div>
-        <button
-          id="inventory_armour_add"
-          onClick={itemAdder(armourList, setArmour, defaultArmour)}
-        >
-          Add Armour
-        </button>
+        <button onClick={add}>Add Armour</button>
       </div>
     </div>
   );
@@ -622,9 +616,10 @@ const ProficienciesViewer = ({
   proficiencies,
   setProficiencies,
 }: ProficienciesViewerProps) => {
-  const setter = makeArrayPropertySetterFactory(
+  const { set, remove, add, ref } = useArrayManager(
     proficiencies,
-    setProficiencies
+    setProficiencies,
+    defaultProficiency
   );
   return (
     <div id="proficiencies">
@@ -637,35 +632,21 @@ const ProficienciesViewer = ({
             <InputControl
               label="Type"
               value={proficiency.name}
-              setValue={setter(index, "name")}
+              setValue={set(index, "name")}
+              innerRef={proficiencies.length - 1 === index ? ref : null}
             />
             <TextareaControl
               label=" Applied to"
               value={proficiency.description}
-              setValue={setter(index, "description")}
+              setValue={set(index, "description")}
               placeholder="athletics religion"
             />
-            <button
-              onClick={() => {
-                proficiencies.splice(index, 1);
-                setProficiencies([...proficiencies]);
-              }}
-            >
-              Remove
-            </button>
+            <button onClick={remove(index)}>Remove</button>
           </li>
         ))}
       </ul>
       <div>
-        <button
-          onClick={itemAdder(
-            proficiencies,
-            setProficiencies,
-            defaultProficiency
-          )}
-        >
-          Add a Proficiency
-        </button>
+        <button onClick={add}>Add a Proficiency</button>
       </div>
     </div>
   );
@@ -867,7 +848,11 @@ type CantripViewerProps = {
 };
 
 const CantripViewer = ({ cantrips, setCantrips }: CantripViewerProps) => {
-  const setter = makeArrayPropertySetterFactory(cantrips, setCantrips);
+  const { set, remove, add, ref } = useArrayManager(
+    cantrips,
+    setCantrips,
+    defaultCantrip
+  );
   return (
     <div>
       <div>
@@ -880,24 +865,21 @@ const CantripViewer = ({ cantrips, setCantrips }: CantripViewerProps) => {
               <InputControl
                 label="Name"
                 value={cantrip.name}
-                setValue={setter(index, "name")}
+                setValue={set(index, "name")}
+                innerRef={cantrips.length - 1 === index ? ref : null}
               />
               <InputControl
                 label="Description"
                 value={cantrip.description}
-                setValue={setter(index, "description")}
+                setValue={set(index, "description")}
               />
-              <button onClick={removeItem(cantrips, setCantrips, index)}>
-                Remove
-              </button>
+              <button onClick={remove(index)}>Remove</button>
             </li>
           );
         })}
       </ul>
       <div>
-        <button onClick={itemAdder(cantrips, setCantrips, defaultCantrip)}>
-          Add a Cantrip
-        </button>
+        <button onClick={add}>Add a Cantrip</button>
       </div>
     </div>
   );
@@ -909,7 +891,11 @@ type SpellsViewerProps = {
 };
 
 const SpellViewer = ({ spells, setSpells }: SpellsViewerProps) => {
-  const setter = makeArrayPropertySetterFactory(spells, setSpells);
+  const { set, remove, add, ref } = useArrayManager(
+    spells,
+    setSpells,
+    defaultSpell
+  );
   return (
     <div>
       <div>
@@ -921,17 +907,18 @@ const SpellViewer = ({ spells, setSpells }: SpellsViewerProps) => {
             <InputControl
               label="Name"
               value={spell.name}
-              setValue={setter(index, "name")}
+              setValue={set(index, "name")}
+              innerRef={spells.length - 1 === index ? ref : null}
             />
             <TextareaControl
               label="Description"
               value={spell.description}
-              setValue={setter(index, "description")}
+              setValue={set(index, "description")}
             />
             <NumberControl
               label="Level"
               value={spell.level}
-              setValue={setter(index, "level")}
+              setValue={set(index, "level")}
             />
             <div>
               <label htmlFor={"memorised" + index}>Memorised/prepared</label>
@@ -941,22 +928,18 @@ const SpellViewer = ({ spells, setSpells }: SpellsViewerProps) => {
                 value="Memorised / Prepared"
                 checked={spell.memorised}
                 onChange={(e) =>
-                  setter(index, "memorised")(e.currentTarget.checked)
+                  set(index, "memorised")(e.currentTarget.checked)
                 }
               />
             </div>
             <div>
-              <button onClick={removeItem(spells, setSpells, index)}>
-                Remove
-              </button>
+              <button onClick={remove(index)}>Remove</button>
             </div>
           </li>
         ))}
       </ul>
       <div>
-        <button onClick={itemAdder(spells, setSpells, defaultSpell)}>
-          Add a spell
-        </button>
+        <button onClick={add}>Add a spell</button>
       </div>
     </div>
   );
@@ -965,7 +948,11 @@ const SpellViewer = ({ spells, setSpells }: SpellsViewerProps) => {
 type NotesViewerProps = { notes: Note[]; setNotes: (notes: Note[]) => void };
 
 const NotesViewer = ({ notes, setNotes }: NotesViewerProps) => {
-  const setter = makeArrayPropertySetterFactory(notes, setNotes);
+  const { set, remove, add, ref } = useArrayManager(
+    notes,
+    setNotes,
+    defaultNote
+  );
   return (
     <div id="notes">
       <div>
@@ -977,26 +964,23 @@ const NotesViewer = ({ notes, setNotes }: NotesViewerProps) => {
             <InputControl
               label="Name"
               value={note.name}
-              setValue={setter(index, "name")}
+              setValue={set(index, "name")}
+              innerRef={index === notes.length - 1 ? ref : null}
             />
             <TextareaControl
               label="Note"
               value={note.note}
-              setValue={setter(index, "note")}
+              setValue={set(index, "note")}
             />
             <div>
-              <button onClick={removeItem(notes, setNotes, index)}>
-                Remove
-              </button>
+              <button onClick={remove(index)}>Remove</button>
             </div>
           </li>
         ))}
       </ul>
 
       <div>
-        <button onClick={itemAdder(notes, setNotes, defaultNote)}>
-          Add a Note
-        </button>
+        <button onClick={add}>Add a Note</button>
       </div>
     </div>
   );

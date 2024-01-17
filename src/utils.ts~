@@ -1,0 +1,3 @@
+const makeSetter = (obj: T) => {
+  return callback();
+};

@@ -1,3 +1,0 @@
-export const CharacterViewer = () => {
-  return <div></div>;
-};

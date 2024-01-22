@@ -455,7 +455,7 @@ const FeaturesViewer = ({ features, setFeatures }: FeaturesViewerProps) => {
         ))}
       </ul>
       <div>
-        <button onClick={add}>Add a spell or ability</button>
+        <button onClick={add}>Add feature or ability</button>
       </div>
     </div>
   );

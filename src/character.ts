@@ -44,11 +44,25 @@ export type CharacterV2 = {
   notes: Note[];
 };
 
-export type Character = {
+export type CharacterV3 = {
   version: "3";
   characterAbilities: CharacterAbilities;
   combatStats: CombatStats;
-  weapons: Weapon[];
+  weapons: WeaponV3[];
+  skillsList: Skills;
+  spellsAndCombatAbilities: Feature[];
+  inventory: InventoryV3;
+  proficiencies: Proficiencies;
+  characterInformationList: CharacterInformation;
+  characterBackground: ExtraInformation;
+  spellBook: SpellBook;
+  notes: Note[];
+};
+
+export type Character = {
+  version: "4";
+  characterAbilities: CharacterAbilities;
+  combatStats: CombatStats;
   skillsList: Skills;
   spellsAndCombatAbilities: Feature[];
   inventory: Inventory;
@@ -63,14 +77,14 @@ export type StoredCharacter =
   | Character
   | CharacterV0
   | CharacterV1
-  | CharacterV2;
+  | CharacterV2
+  | CharacterV3;
 
 export const defaultCharacter = (): Character => {
   return {
-    version: "3",
+    version: "4",
     characterAbilities: defaultCharacterAbilities(),
     combatStats: defaultCombatStats(),
-    weapons: [],
     skillsList: defaultSkills(),
     spellsAndCombatAbilities: [],
     inventory: defaultInventory(),
@@ -184,8 +198,14 @@ const defaultSkills = (): Skills => {
   };
 };
 
-export type Weapon = {
+export type WeaponV3 = {
   name: string;
+  hitModifier: number;
+  damageRoll: string;
+  range: string;
+};
+
+export type Weapon = Item & {
   hitModifier: number;
   damageRoll: string;
   range: string;
@@ -194,6 +214,9 @@ export type Weapon = {
 export const defaultWeapon = (): Weapon => {
   return {
     name: "",
+    description: "",
+    amount: 1,
+    weight: 0,
     hitModifier: 0,
     damageRoll: "",
     range: "",
@@ -255,9 +278,18 @@ export type InventoryV1 = {
   items: Item[];
 };
 
-export type Inventory = {
+export type InventoryV3 = {
   armour: Armour[];
   weapons: Item[];
+  potions: Item[];
+  treasure: Item[];
+  kitsAndTools: Item[];
+  items: Item[];
+};
+
+export type Inventory = {
+  armour: Armour[];
+  weapons: Weapon[];
   potions: Item[];
   treasure: Item[];
   kitsAndTools: Item[];
@@ -404,15 +436,17 @@ export const updateOldCharacter = (char: StoredCharacter): Character => {
     for (let feature of characterFeatures) {
       updatedChar.spellsAndCombatAbilities.push(feature);
     }
-    return updateV2toV3(updateV1toV2(char));
+    return updateV3toV4(updateV2toV3(updateV1toV2(char)));
   } else if ("version" in char) {
     if (char.version === "2") {
-      return updateV2toV3(char);
+      return updateV3toV4(updateV2toV3(char));
+    } else if (char.version === "3") {
+      return updateV3toV4(char);
     } else {
       return char;
     }
   } else {
-    return updateV2toV3(updateV1toV2(char));
+    return updateV3toV4(updateV2toV3(updateV1toV2(char)));
   }
 };
 
@@ -426,7 +460,7 @@ const updateV1toV2 = (char: CharacterV1): CharacterV2 => {
   return { version: "2", ...withInventory };
 };
 
-const updateV2toV3 = (char: CharacterV2): Character => {
+const updateV2toV3 = (char: CharacterV2): CharacterV3 => {
   const proficiencies = defaultProficiencies();
   proficiencies.others = char.proficiencies;
   const withNewProficiencies = transformProperty(
@@ -435,4 +469,38 @@ const updateV2toV3 = (char: CharacterV2): Character => {
     proficiencies
   );
   return transformProperty(withNewProficiencies, "version", "3" as const);
+};
+
+const updateV3toV4 = (char: CharacterV3): Character => {
+  const weapons: Weapon[] = char.weapons
+    .map(({ name, hitModifier, damageRoll, range }) => ({
+      name,
+      description: "",
+      amount: 1,
+      weight: 0,
+      hitModifier,
+      damageRoll,
+      range,
+    }))
+    .concat(
+      char.inventory.weapons.map(({ name, description, amount, weight }) => ({
+        name,
+        description,
+        amount,
+        weight,
+        hitModifier: 0,
+        damageRoll: "",
+        range: "5ft",
+      }))
+    );
+  const withNewWeapons = transformProperty(
+    char,
+    "inventory",
+    transformProperty(char.inventory, "weapons", weapons)
+  );
+  // The object is constructed in this function so no side effects
+  // We don't want weapons on the outputed character so we set it to undefined
+  // @ts-ignore
+  withNewWeapons.weapons = undefined;
+  return transformProperty(withNewWeapons, "version", "4" as const);
 };

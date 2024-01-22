@@ -54,10 +54,6 @@ export const CharacterViewer = ({
         stats={character.combatStats}
         setStats={propertySetter("combatStats")}
       />
-      <WeaponsViewer
-        weapons={character.weapons}
-        setWeapons={propertySetter("weapons")}
-      />
       <SkillsViewer
         skills={character.skillsList}
         setSkills={propertySetter("skillsList")}
@@ -230,6 +226,11 @@ const WeaponsViewer = ({ weapons, setWeapons }: WeaponsViewerProps) => {
               setValue={set(index, "name")}
               innerRef={index === weapons.length - 1 ? ref : null}
             />
+            <TextareaControl
+              label="Description"
+              value={weapon.description}
+              setValue={set(index, "description")}
+            />
             <NumberControl
               label="Hit modifier"
               value={weapon.hitModifier}
@@ -244,6 +245,16 @@ const WeaponsViewer = ({ weapons, setWeapons }: WeaponsViewerProps) => {
               label="Range"
               value={weapon.range}
               setValue={set(index, "range")}
+            />
+            <NumberControl
+              label="Amount owned"
+              value={weapon.amount}
+              setValue={set(index, "amount")}
+            />
+            <NumberControl
+              label="Weight (pounds)"
+              value={weapon.weight}
+              setValue={set(index, "weight")}
             />
             <div>
               <button onClick={remove(index)}>Remove</button>
@@ -470,11 +481,9 @@ const InventoryViewer = ({ inventory, setInventory }: InventoryViewerProps) => {
         armour={inventory.armour}
         setArmour={propertySetter("armour")}
       />
-      <ItemViewer
-        headingText="Weapons"
-        addbuttonText="Add Weapon"
-        items={inventory.weapons}
-        setItems={propertySetter("weapons")}
+      <WeaponsViewer
+        weapons={inventory.weapons}
+        setWeapons={propertySetter("weapons")}
       />
       <ItemViewer
         headingText="Potions"

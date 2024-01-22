@@ -44,7 +44,7 @@ export default function App() {
 const storage_key = "character_sheets";
 
 const getStoredCharacters = (): Character[] => {
-  return JSON.parse(localStorage.getItem(storage_key) ?? "[]").map(
-    updateOldCharacter
-  );
+  const json = localStorage.getItem(storage_key) ?? "[]";
+  localStorage.setItem(storage_key + "v1", json);
+  return JSON.parse(json).map(updateOldCharacter);
 };

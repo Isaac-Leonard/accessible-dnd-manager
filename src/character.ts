@@ -379,5 +379,6 @@ const updateV1toV2 = (char: CharacterV1): Character => {
       return [key, itemList.map((item) => ({ ...item, weight: 0, amount: 1 }))];
     })
   ) as Inventory;
-  return transformProperty(char, "inventory", inventory);
+  const withInventory = transformProperty(char, "inventory", inventory);
+  return { version: "2", ...withInventory };
 };

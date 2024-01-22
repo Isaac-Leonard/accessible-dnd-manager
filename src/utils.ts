@@ -114,15 +114,11 @@ export const useArrayManager = <T extends Object>(
 
 // The first ts ignore is because there is no way to specify changes in type of an object in ts
 // The second is because of keyof Draft<T> being screwy
-export const transformProperty = <
-  O extends object,
-  N extends Object,
-  K extends keyof O & keyof N
->(
+export const transformProperty = <O extends object, K extends keyof O, V>(
   obj: O,
   property: K,
-  newProperty: N[K]
-): N =>
+  newProperty: V
+): Omit<O, K> & { [P in K]: V } =>
   // @ts-ignore
   produce(obj, (draft) => {
     // @ts-ignore

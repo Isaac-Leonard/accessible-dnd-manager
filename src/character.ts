@@ -1,4 +1,36 @@
+import { transformProperty } from "./utils";
+
+export type CharacterV0 = {
+  characterAbilities: CharacterAbilities;
+  combatStats: CombatStats;
+  weapons: Weapon[];
+  skillsList: Skills;
+  spellsAndCombatAbilities: Feature[];
+  characterFeatures: Feature[];
+  inventory: InventoryV1;
+  proficiencies: Proficiency[];
+  characterInformationList: CharacterInformation;
+  characterBackground: ExtraInformation;
+  spellBook: SpellBook;
+  notes: Note[];
+};
+
+export type CharacterV1 = {
+  characterAbilities: CharacterAbilities;
+  combatStats: CombatStats;
+  weapons: Weapon[];
+  skillsList: Skills;
+  spellsAndCombatAbilities: Feature[];
+  inventory: InventoryV1;
+  proficiencies: Proficiency[];
+  characterInformationList: CharacterInformation;
+  characterBackground: ExtraInformation;
+  spellBook: SpellBook;
+  notes: Note[];
+};
+
 export type Character = {
+  version: "2";
   characterAbilities: CharacterAbilities;
   combatStats: CombatStats;
   weapons: Weapon[];
@@ -12,8 +44,11 @@ export type Character = {
   notes: Note[];
 };
 
+export type StoredCharacter = Character | CharacterV1 | CharacterV0;
+
 export const defaultCharacter = (): Character => {
   return {
+    version: "2",
     characterAbilities: defaultCharacterAbilities(),
     combatStats: defaultCombatStats(),
     weapons: [],
@@ -156,7 +191,19 @@ export const defaultFeature = (): Feature => {
   };
 };
 
-export type Item = { name: string; description: string };
+export type ItemV1 = { name: string; description: string };
+export type Item = {
+  name: string;
+  description: string;
+  weight: number;
+  amount: number;
+};
+
+export type ArmourV1 = ItemV1 & {
+  armourType: string;
+  armourClassBonus: string;
+  penalty: string;
+};
 
 export type Armour = Item & {
   armourType: string;
@@ -165,17 +212,28 @@ export type Armour = Item & {
 };
 
 export const defaultItem = (): Item => {
-  return { name: "", description: "" };
+  return { name: "", description: "", weight: 0, amount: 1 };
 };
 
 export const defaultArmour = (): Armour => {
   return {
     name: "",
     description: "",
+    weight: 0,
+    amount: 1,
     armourType: "",
     armourClassBonus: "",
     penalty: "",
   };
+};
+
+export type InventoryV1 = {
+  armour: Armour[];
+  weapons: Item[];
+  potions: Item[];
+  treasure: Item[];
+  kitsAndTools: Item[];
+  items: Item[];
 };
 
 export type Inventory = {
@@ -301,10 +359,25 @@ export const defaultNote = (): Note => {
   return { name: "", note: "" };
 };
 
-export const updateOldCharacter = (char: any): Character => {
-  const { characterFeatures = [], ...updatedChar } = char;
-  for (let feature of characterFeatures) {
-    updatedChar.spellsAndCombatAbilities.push(feature);
+export const updateOldCharacter = (char: StoredCharacter): Character => {
+  if ("characterFeatures" in char) {
+    const { characterFeatures, ...updatedChar } = char;
+    for (let feature of characterFeatures) {
+      updatedChar.spellsAndCombatAbilities.push(feature);
+    }
+    return updateV1toV2(char);
+  } else if ("version" in char) {
+    return char;
+  } else {
+    return updateV1toV2(char);
   }
-  return updatedChar;
+};
+
+const updateV1toV2 = (char: CharacterV1): Character => {
+  const inventory = Object.fromEntries(
+    Object.entries(char.inventory).map(([key, itemList]) => {
+      return [key, itemList.map((item) => ({ ...item, weight: 0, amount: 1 }))];
+    })
+  ) as Inventory;
+  return transformProperty(char, "inventory", inventory);
 };

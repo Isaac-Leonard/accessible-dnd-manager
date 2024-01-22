@@ -500,7 +500,10 @@ const updateV3toV4 = (char: CharacterV3): Character => {
   );
   // The object is constructed in this function so no side effects
   // We don't want weapons on the outputed character so we set it to undefined
-  // @ts-ignore
-  withNewWeapons.weapons = undefined;
-  return transformProperty(withNewWeapons, "version", "4" as const);
+  const withoutOldWeapons = transformProperty(
+    withNewWeapons,
+    "weapons",
+    undefined
+  );
+  return transformProperty(withoutOldWeapons, "version", "4" as const);
 };

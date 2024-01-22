@@ -11,6 +11,7 @@ import {
   Inventory,
   Item,
   Note,
+  Proficiencies,
   Proficiency,
   Skills,
   Spell,
@@ -632,14 +633,67 @@ const ArmourViewer = ({ armour: armourList, setArmour }: ArmourViewerProps) => {
 };
 
 type ProficienciesViewerProps = {
-  proficiencies: Proficiency[];
-  setProficiencies: (proficiencies: Proficiency[]) => void;
+  proficiencies: Proficiencies;
+  setProficiencies: (proficiencies: Proficiencies) => void;
 };
 
 const ProficienciesViewer = ({
   proficiencies,
   setProficiencies,
 }: ProficienciesViewerProps) => {
+  const set = makePropertySetterFactory(proficiencies, setProficiencies);
+  return (
+    <div>
+      <div>
+        <h2 id="proficiencies_heading">Proficiencies</h2>
+      </div>
+      <NumberControl
+        label="Proficiency bonus"
+        value={proficiencies.bonus}
+        setValue={set("bonus")}
+      />
+      <InputControl
+        label="Weapons"
+        value={proficiencies.weapons}
+        setValue={set("weapons")}
+      />
+      <InputControl
+        label="Armour"
+        value={proficiencies.armour}
+        setValue={set("armour")}
+      />
+      <InputControl
+        label="Saving throws"
+        value={proficiencies.savingThrows}
+        setValue={set("savingThrows")}
+      />
+      <InputControl
+        label="Skills"
+        value={proficiencies.skills}
+        setValue={set("skills")}
+      />
+      <InputControl
+        label="Tools"
+        value={proficiencies.tools}
+        setValue={set("tools")}
+      />
+      <OtherProficienciesViewer
+        proficiencies={proficiencies.others}
+        setProficiencies={set("others")}
+      />{" "}
+    </div>
+  );
+};
+
+type OtherProficienciesViewerProps = {
+  proficiencies: Proficiency[];
+  setProficiencies: (proficiencies: Proficiency[]) => void;
+};
+
+const OtherProficienciesViewer = ({
+  proficiencies,
+  setProficiencies,
+}: OtherProficienciesViewerProps) => {
   const { set, remove, add, ref } = useArrayManager(
     proficiencies,
     setProficiencies,
@@ -647,28 +701,23 @@ const ProficienciesViewer = ({
   );
   return (
     <div id="proficiencies">
-      <div>
-        <h2 id="proficiencies_heading">Proficiencies</h2>
-      </div>
-      <ul id="proficiencies_list">
-        {proficiencies.map((proficiency, index) => (
-          <li>
-            <InputControl
-              label="Type"
-              value={proficiency.name}
-              setValue={set(index, "name")}
-              innerRef={proficiencies.length - 1 === index ? ref : null}
-            />
-            <TextareaControl
-              label=" Applied to"
-              value={proficiency.description}
-              setValue={set(index, "description")}
-              placeholder="athletics religion"
-            />
-            <button onClick={remove(index)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+      {proficiencies.map((proficiency, index) => (
+        <div>
+          <InputControl
+            label="name"
+            value={proficiency.name}
+            setValue={set(index, "name")}
+            innerRef={proficiencies.length - 1 === index ? ref : null}
+          />
+          <InputControl
+            label="Applied to"
+            value={proficiency.description}
+            setValue={set(index, "description")}
+            placeholder="athletics religion"
+          />
+          <button onClick={remove(index)}>Remove</button>
+        </div>
+      ))}
       <div>
         <button onClick={add}>Add a Proficiency</button>
       </div>

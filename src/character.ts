@@ -29,7 +29,7 @@ export type CharacterV1 = {
   notes: Note[];
 };
 
-export type Character = {
+export type CharacterV2 = {
   version: "2";
   characterAbilities: CharacterAbilities;
   combatStats: CombatStats;
@@ -44,18 +44,37 @@ export type Character = {
   notes: Note[];
 };
 
-export type StoredCharacter = Character | CharacterV1 | CharacterV0;
+export type Character = {
+  version: "3";
+  characterAbilities: CharacterAbilities;
+  combatStats: CombatStats;
+  weapons: Weapon[];
+  skillsList: Skills;
+  spellsAndCombatAbilities: Feature[];
+  inventory: Inventory;
+  proficiencies: Proficiencies;
+  characterInformationList: CharacterInformation;
+  characterBackground: ExtraInformation;
+  spellBook: SpellBook;
+  notes: Note[];
+};
+
+export type StoredCharacter =
+  | Character
+  | CharacterV0
+  | CharacterV1
+  | CharacterV2;
 
 export const defaultCharacter = (): Character => {
   return {
-    version: "2",
+    version: "3",
     characterAbilities: defaultCharacterAbilities(),
     combatStats: defaultCombatStats(),
     weapons: [],
     skillsList: defaultSkills(),
     spellsAndCombatAbilities: [],
     inventory: defaultInventory(),
-    proficiencies: [],
+    proficiencies: defaultProficiencies(),
     characterInformationList: defaultCharacterInformation(),
     characterBackground: defaultExtraInformation(),
     spellBook: defaultSpellBook(),
@@ -262,6 +281,26 @@ export const defaultProficiency = (): Proficiency => {
   return { name: "", description: "" };
 };
 
+export type Proficiencies = {
+  bonus: number;
+  weapons: string;
+  armour: string;
+  savingThrows: string;
+  skills: string;
+  tools: string;
+  others: Proficiency[];
+};
+
+export const defaultProficiencies = (): Proficiencies => ({
+  bonus: 2,
+  weapons: "None",
+  armour: "None",
+  savingThrows: "",
+  skills: "",
+  tools: "None",
+  others: [],
+});
+
 export type CharacterInformation = {
   playerName: string;
   characterName: string;
@@ -365,15 +404,19 @@ export const updateOldCharacter = (char: StoredCharacter): Character => {
     for (let feature of characterFeatures) {
       updatedChar.spellsAndCombatAbilities.push(feature);
     }
-    return updateV1toV2(char);
+    return updateV2toV3(updateV1toV2(char));
   } else if ("version" in char) {
-    return char;
+    if (char.version === "2") {
+      return updateV2toV3(char);
+    } else {
+      return char;
+    }
   } else {
-    return updateV1toV2(char);
+    return updateV2toV3(updateV1toV2(char));
   }
 };
 
-const updateV1toV2 = (char: CharacterV1): Character => {
+const updateV1toV2 = (char: CharacterV1): CharacterV2 => {
   const inventory = Object.fromEntries(
     Object.entries(char.inventory).map(([key, itemList]) => {
       return [key, itemList.map((item) => ({ ...item, weight: 0, amount: 1 }))];
@@ -381,4 +424,15 @@ const updateV1toV2 = (char: CharacterV1): Character => {
   ) as Inventory;
   const withInventory = transformProperty(char, "inventory", inventory);
   return { version: "2", ...withInventory };
+};
+
+const updateV2toV3 = (char: CharacterV2): Character => {
+  const proficiencies = defaultProficiencies();
+  proficiencies.others = char.proficiencies;
+  const withNewProficiencies = transformProperty(
+    char,
+    "proficiencies",
+    proficiencies
+  );
+  return transformProperty(withNewProficiencies, "version", "3" as const);
 };

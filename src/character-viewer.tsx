@@ -456,11 +456,15 @@ type InventoryViewerProps = {
 
 const InventoryViewer = ({ inventory, setInventory }: InventoryViewerProps) => {
   const propertySetter = makePropertySetterFactory(inventory, setInventory);
+  const totalWeight = Object.values(inventory)
+    .flat()
+    .reduce((total, { amount, weight }) => total + amount * weight, 0);
   return (
     <div id="inventory">
       <div>
         <h2 id="inventory_heading">Inventory</h2>
       </div>
+      <div>Total weight: {totalWeight}</div>
       <ArmourViewer
         armour={inventory.armour}
         setArmour={propertySetter("armour")}

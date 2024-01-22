@@ -536,6 +536,16 @@ const ItemViewer = ({
               value={item.description}
               setValue={set(index, "description")}
             />
+            <NumberControl
+              label="Amount owned"
+              value={item.amount}
+              setValue={set(index, "amount")}
+            />
+            <NumberControl
+              label="Weight (pounds)"
+              value={item.weight}
+              setValue={set(index, "weight")}
+            />
             <div>
               <button onClick={remove(index)}>Remove</button>
             </div>
@@ -593,6 +603,16 @@ const ArmourViewer = ({ armour: armourList, setArmour }: ArmourViewerProps) => {
               label="Penalty"
               value={armour.penalty}
               setValue={set(index, "penalty")}
+            />
+            <NumberControl
+              label="Amount owned"
+              value={armour.amount}
+              setValue={set(index, "amount")}
+            />
+            <NumberControl
+              label="Weight (pounds)"
+              value={armour.weight}
+              setValue={set(index, "weight")}
             />
             <div>
               <button onClick={remove(index)}>Remove</button>

@@ -12,7 +12,7 @@ jobs:
 
     strategy:
     steps:
-      - name use repo
+      - name: use repo
         uses: actions/checkout@v4
 
       - name: Use Node.js 22.x
